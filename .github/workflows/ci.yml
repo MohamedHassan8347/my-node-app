@@ -13,6 +13,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,7 +21,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20   # 👈 use Node.js 20 to avoid Jest issues
+
+      - name: Verify Node version
+        run: node -v         # 👈 prints the Node.js version in the Actions log
 
       - name: Install dependencies
         run: npm install
